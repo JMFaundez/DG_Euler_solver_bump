@@ -1,5 +1,6 @@
 
 #include "DG.h"
+#include <ctime>
 
 void initialize(state_vec u[], int N_elem, int np){
     double rho,c,vx,vy,rhoE,T;
@@ -124,12 +125,29 @@ void solve_GD(int max_iter, bool free_stream, double tolerance,
     double dl_int[N_int];
     double dl_bound[N_bound];
     double I_mid[2*N_int], B_mid[2*N_bound];
+    clock_t begin_par = clock();
     // Assign values to the arrays
     cout << "++++++++++++ READING MESH +++++++++++" <<endl; 
     read_file(V,El,Ec,I2E,B2E,In,Bn,P,Area,dl_int,dl_bound,files,N_int,N_bound,N_elem,N_curv,N_nodes,I_mid, B_mid);
     cout << "++++++++++++ Done! +++++++++++" <<endl; 
     
     int np = (p+1)*(p+2)/2;   // # of coef per element
+    cout << "++++++++++++ Parameters +++++++++++" <<endl; 
+    cout << "Case: " << files[0] << endl;
+    cout << "p: " << p << endl;
+    cout << "np: " << np << endl;
+    cout << "CFL: " << np << endl;
+    cout << "tolerance: " << tolerance << endl;
+    cout << "Max iterations: " << max_iter << endl;
+    cout << "gamma: " << gamm << endl;
+    cout << "M_inf: " << M_inf << endl;
+    cout << "R: " << R << endl;
+    cout << "p_inf: " << p_inf << endl;
+    cout << "flow_angle: " << flow_angle << endl;
+    cout << "Tt: " << Tt << endl;
+    cout << "pt: " << pt << endl;
+    cout << "++++++++++++ End parameters +++++++++++" <<endl; 
+
     // Quad points 1d and 2d
     int nq1; // # number of 1d points
     int nq1c; // # number of 1d points for curved elements
@@ -273,6 +291,8 @@ void solve_GD(int max_iter, bool free_stream, double tolerance,
     state_vec u[N_elem*np];
     state_vec uFE[N_elem*np];
     double local_max, global_max;
+    clock_t end_par = clock();
+    cout << "Initialization time: " << double(end_par-begin_par)/CLOCKS_PER_SEC <<endl;
     /*
     //  ACTUALLY SOLVES FOR SPECIFIED MAX ITERATIONS
     */
@@ -358,6 +378,9 @@ void solve_GD(int max_iter, bool free_stream, double tolerance,
         residual_file << global_max << '\n';
         if(global_max<tolerance){
             break;
+        } 
+        if(t==max_iter-1){
+            cout << "++++++ MAX NUMBER OF ITERATIONS REACHED" << endl;
         } 
     }
 

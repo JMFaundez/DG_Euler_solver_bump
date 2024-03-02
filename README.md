@@ -9,6 +9,7 @@ The case corresponds to [](https://how4.cenaero.be/content/bi2-inviscid-flow-ove
 
 - The code can run polynomial orders $p=0,1,2$ using Lagrange basis.
 - RK4 is used to march the solution with a local time stepping.
+- The fluxes are computed using the Roe flux
 - The armadillo package must be installed in order to compute some matrix operations (inverse of the mass matrix)
 
 1. `DG.h` defines all the functions used by the solver and the constants for the flow. 
@@ -48,3 +49,4 @@ Only the elements at the bottom of the domain are curved, the rest are kept line
 
 - The `Area` file does not take into account the high order representation of the elements at the bottom. But this quantity is only used to compute the local `dt` to march the solution.
 - The flag `free-stream` is to run a test running free-stream on all boundaries.
+- For curved elements, the normals are computed inside the residual calculations. 

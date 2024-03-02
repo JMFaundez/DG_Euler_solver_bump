@@ -13,7 +13,7 @@ int main()
 
     int p = 0;
     int mesh = 0;
-    int max_iter= 130000;
+    int max_iter= 10;
     bool free_stream = false;
     double tolerance = 1.0e-7;
     double CFL=0.8;
