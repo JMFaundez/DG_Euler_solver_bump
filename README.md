@@ -2,7 +2,7 @@
 
 ## Case 
 
-![]{./gen_mesh/mesh0.png}
+![](./gen_mesh/mesh0.png)
 
 ## Solver
 
