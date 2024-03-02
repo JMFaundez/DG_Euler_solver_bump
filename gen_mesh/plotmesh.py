@@ -27,18 +27,21 @@ def readgri(fname):
     Mesh = {'V':V, 'E':E, 'B':B, 'Bname':Bname }
     return Mesh
 
-file_name = 'bump0.gri'
-faces = np.loadtxt('I2E0.txt')-1
-bfaces = np.loadtxt('B2E0.txt')-1
+filen="1"
+file_name = "bump"+filen+".gri"
+faces = np.loadtxt("I2E"+filen+".txt")-1
+bfaces = np.loadtxt("B2E"+filen+".txt")-1
 mesh = readgri(file_name)
 p = mesh['V']
 t = mesh['E']
-
+linew=1
 N_bfaces = len(bfaces[:,0])
 N_faces = len(faces[:,0])
 
 t_i = time.time()
-plt.axis('off')
+#plt.axis('off')
+plt.figure()
+plt.ylim([0,1])
 i_p = [1,2,0] #mapping for the next local face. Ej: face[ip[0]]=1
 i_m = [2,0,1]
 for i in range(N_faces):
@@ -50,7 +53,7 @@ for i in range(N_faces):
     x2 = p[n2,0]
     y2 = p[n2,1]
     plt.axis('equal')
-    plt.plot([x1,x2],[y1,y2],'k-',lw=0.15)
+    plt.plot([x1,x2],[y1,y2],'k-',lw=linew)
 
 l_s = ['r-','g-','b-','y-']
 for i in range(N_bfaces):
@@ -62,8 +65,9 @@ for i in range(N_bfaces):
     x2 = p[n2,0]
     y2 = p[n2,1]
     plt.axis('equal')
-    plt.plot([x1,x2],[y1,y2],l_s[int(nb)],lw=0.15)
-
-plt.savefig("b0.pdf", bbox_inches='tight',pad_inches=0)
+    plt.plot([x1,x2],[y1,y2],l_s[int(nb)],lw=linew)
+plt.tight_layout
+plt.gca().set_aspect('equal', adjustable='box')
+plt.savefig("mesh"+filen+".png", bbox_inches='tight',pad_inches=0)
 t_f = time.time()
 delta_t = (t_f-t_i)/60

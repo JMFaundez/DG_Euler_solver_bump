@@ -4,11 +4,12 @@
 #%%
 import numpy as np 
 import matplotlib.pyplot as plt
-filetosave="bump0.gri"
+nfile="1"
+filetosave="bump"+nfile+".gri"
 f = open(filetosave,"w+")
 
-p = np.loadtxt('nodes')
-t = np.loadtxt('element')
+p = np.loadtxt("nodes"+nfile)
+t = np.loadtxt("element"+nfile)
 tol = 0.02 # Tolerance to find boundaries
 nNode, Dim = np.shape(p)
 nElemTot,_ = np.shape(t)
@@ -88,3 +89,5 @@ f.close()
 print("File ",filetosave," saved!")
 
 
+
+# %%

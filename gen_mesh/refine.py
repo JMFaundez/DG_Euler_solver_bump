@@ -32,6 +32,7 @@ def readgri(fname):
 
 # read files of mesh that will be refined.
 file_num = 0
+print("Refining mesh", file_num)
 I2E = np.loadtxt('I2E'+str(file_num)+'.txt') - 1 #python index
 B2E = np.loadtxt('B2E'+str(file_num)+'.txt') - 1 #python index
 mesh = readgri('bump'+str(file_num)+'.gri')
@@ -73,8 +74,8 @@ for i in range(N_face):
     ny = (y1+y2)/2
     #store coordinates of the new node (the number is the index of the dataframe)
     df_newnode = pd.DataFrame(data={"x":[nx],"y":[ny]})
-    df_nodes = df_nodes.append(df_newnode,ignore_index=True)
-    #df_nodes = pd.concat([df_nodes,df_newnode],ignore_index=True)
+    #df_nodes = df_nodes.append(df_newnode,ignore_index=True)
+    df_nodes = pd.concat([df_nodes,df_newnode],ignore_index=True)
 
 #loop over the boundary faces
 for i in range(N_boundaries):
@@ -101,8 +102,8 @@ for i in range(N_boundaries):
         ny = (y1+y2)/2
     #store coordinates of the new node
     df_newnode = pd.DataFrame(data={"x":[nx],"y":[ny]})
-    df_nodes = df_nodes.append(df_newnode,ignore_index=True)
-    #f_nodes = pd.concat([df_nodes,df_newnode],ignore_index=True)
+    #df_nodes = df_nodes.append(df_newnode,ignore_index=True)
+    df_nodes = pd.concat([df_nodes,df_newnode],ignore_index=True)
     index_new_nodes = index_new_nodes + 1
     df_B2E.at[i,'new_node'] = index_new_nodes
 
@@ -151,6 +152,10 @@ for i in range(N_elem):
 
 new_elements = np.array(new_elements)+1 #1-index file
 #store elements and nodes, change name according to the mesh
-np.savetxt('element'+str(file_num+1),new_elements,fmt='%i')
+fileelem = 'element'+str(file_num+1)
+np.savetxt(fileelem,new_elements,fmt='%i')
+print("File ",fileelem," saved")
 new_nodes = df_nodes.values
-np.savetxt('nodes'+str(file_num+1),new_nodes)
+filenodes='nodes'+str(file_num+1)
+np.savetxt(filenodes,new_nodes)
+print("File ",filenodes," saved")

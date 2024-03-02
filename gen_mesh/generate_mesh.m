@@ -40,5 +40,5 @@ fh=@(p) 0.05 + 0.5*dpoly(p,vert3);
 [p,t]=distmesh2d(fd,fh,0.05,[-1.5,0; 1.5,.8],vert); %genereate mesh
 size(t) %check number of elements
 
-dlmwrite('nodes',p, 'delimiter','\t') % store nodes coordinates
-dlmwrite('element',t, 'delimiter','\t') % store triangles points
+dlmwrite('nodes0',p, 'delimiter','\t') % store nodes coordinates
+dlmwrite('element0',t, 'delimiter','\t') % store triangles points

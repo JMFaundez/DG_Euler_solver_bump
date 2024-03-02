@@ -143,8 +143,9 @@ def get_matrices(file_name):
 
 
 #read file
-file_num = '0'
+file_num = '1'
 file_name = 'bump'+file_num+'.gri'
+print("Processing ", file_name, " file")
 mesh = readgri(file_name)
 nodes = mesh['V']
 elements = mesh['E']
@@ -161,6 +162,7 @@ np.savetxt('In'+file_num+'.txt',T2['In'],fmt='%.14f')
 np.savetxt('Bn'+file_num+'.txt',T2['Bn'],fmt='%.14f')
 np.savetxt('Area'+file_num+'.txt',T2['Area'],fmt='%.14f')
 print('# Boundary ',T2['Bn'].shape,'# Interior ',T2['In'].shape)
+print("Files saved!")
 I2E = T2['I2E'] - 1 # 0-index
 B2E = T2['B2E'] - 1 #0-index
 N_in = len(I2E) #number of interior faces
@@ -212,7 +214,7 @@ for i in range(N_elem):
     sum_n[i,:] = su_b+su_l+su_r
     mag_el[i] = np.sqrt(sum_n[i,0]**2+sum_n[i,1]**2)
 
-print(max(mag_el))
+print("Maximum magnitude sanity check:",max(mag_el))
 
 
 
