@@ -3,7 +3,7 @@
 ## Case 
 The case corresponds to [](https://how4.cenaero.be/content/bi2-inviscid-flow-over-bump), and it's solved on a unstructured mesh using Discontinous-Galerkin finite-element method, solving the Euler equations.
 
-![](./gen_mesh/mesh0.png =100x)
+![](./gen_mesh/mesh0.png)
 
 ## Solver
 
@@ -42,7 +42,7 @@ The meshes are finally curved and the codes are in `curve_mesh`:
 
 Only the elements at the bottom of the domain are curved, the rest are kept linear. 
 
-![](./curve_mesh/curved_and_linear_elements.png)
+![](./curve_mesh/curved_and_linear_elements.png =x100)
 
 ## Some details
 
