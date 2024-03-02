@@ -41,7 +41,7 @@ The meshes are finally curved and the codes are in `curve_mesh`:
 
 Only the elements at the bottom of the domain are curved, the rest are kept linear. 
 
-![]{./curve_mesh/curved_and_linear_elements.png}
+![](./curve_mesh/curved_and_linear_elements.png)
 
 ## Some details
 
