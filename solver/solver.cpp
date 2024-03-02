@@ -125,7 +125,9 @@ void solve_GD(int max_iter, bool free_stream, double tolerance,
     double dl_bound[N_bound];
     double I_mid[2*N_int], B_mid[2*N_bound];
     // Assign values to the arrays
+    cout << "++++++++++++ READING MESH +++++++++++" <<endl; 
     read_file(V,El,Ec,I2E,B2E,In,Bn,P,Area,dl_int,dl_bound,files,N_int,N_bound,N_elem,N_curv,N_nodes,I_mid, B_mid);
+    cout << "++++++++++++ Done! +++++++++++" <<endl; 
     
     int np = (p+1)*(p+2)/2;   // # of coef per element
     // Quad points 1d and 2d
@@ -247,7 +249,7 @@ void solve_GD(int max_iter, bool free_stream, double tolerance,
             }
         }
     }
-    // Compute the inverse of mass matrix and its inverse
+    // Compute mass matrix and its inverse
     invert_matrix(M_ref, M_ref_inv, np,0);
     //Mass matrix curved elements 
     double M_curv[N_curv*np*np];set_zero(M_curv,N_curv*np*np);
