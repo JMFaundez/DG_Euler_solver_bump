@@ -3,7 +3,7 @@
 ## Case 
 The case corresponds to [](https://how4.cenaero.be/content/bi2-inviscid-flow-over-bump), and it's solved on a unstructured mesh using Discontinous-Galerkin finite-element method, solving the Euler equations.
 
-![](./gen_mesh/mesh0.png =250x)
+![](./gen_mesh/mesh0.png =100x)
 
 ## Solver
 
