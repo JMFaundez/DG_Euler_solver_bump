@@ -11,12 +11,12 @@ int main()
     int N_nodes; // number of nodes
     string files[6]; //name of the files containing mesh and matrices
 
-    int p = 0;
+    int p = 2;
     int mesh = 0;
-    int max_iter= 10;
+    int max_iter= 15000;
     bool free_stream = false;
     double tolerance = 1.0e-7;
-    double CFL=0.8;
+    double CFL=0.9;
     if(mesh==0){
         N_int = 109; 
         N_bound = 28; 

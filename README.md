@@ -1,7 +1,7 @@
 # Discontinous-Galerkin solver for Euler equations
 
 ## Case 
-The case corresponds to [](https://how4.cenaero.be/content/bi2-inviscid-flow-over-bump), and it's solved on a unstructured mesh using Discontinous-Galerkin finite-element method, solving the Euler equations.
+The case corresponds to [BI2 - Inviscid flow over a bump](https://how4.cenaero.be/content/bi2-inviscid-flow-over-bump), and it's solved on a unstructured mesh using Discontinous-Galerkin finite-element method, solving the Euler equations.
 
 ![](./gen_mesh/mesh0.png)
 
@@ -49,4 +49,5 @@ Only the elements at the bottom of the domain are curved, the rest are kept line
 
 - The `Area` file does not take into account the high order representation of the elements at the bottom. But this quantity is only used to compute the local `dt` to march the solution.
 - The flag `free-stream` is to run a test running free-stream on all boundaries.
-- For curved elements, the normals are computed inside the residual calculations. 
+- For curved elements, the normals are computed inside the residual calculations.
+- The postprocessing folder has some python files to plot stuff, but it's not very clean.

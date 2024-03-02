@@ -2,3 +2,4 @@
 main.exe
 solver/Solutions/*
 logfile
+__pycache__
