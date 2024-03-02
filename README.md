@@ -1,11 +1,11 @@
 # Discontinous-Galerkin solver for Euler equations
 
 ## Case 
-
+The case corresponds to []{https://how4.cenaero.be/content/bi2-inviscid-flow-over-bump}, and it's solved on a unstructured mesh using Discontinous-Galerkin finite-element method, solving the Euler equations.
 ![](./gen_mesh/mesh0.png)
 
 ## Solver
-
+The code can run polynomial orders $p=0,1,2$
 The armadillo package must be installed in order to compute some matrix operations (inverse of the mass matrix)
 
 1. `DG.h` defines all the functions used by the solver 
@@ -13,7 +13,7 @@ The armadillo package must be installed in order to compute some matrix operatio
 3. `quad.cpp` includes the basis functions, 1d/2d quad points, Jacobian calculations, Mass Matrix for curved elements
 4. `readgrid.cpp` is the function used to read the curved mesh. It just works for this particular case.
 5. `residuals.cpp` includes 4 functions to compute the interior and edge residual contributions.
-6. `solver.cpp` put everything together and run the time marching scheme RK4
+6. `solver.cpp` puts everything together and runs the time marching scheme RK4
 7. `main.cpp` call the solver and there you can set the mesh, p, tolerance, and CFL
 
 ## Bump mesh generation
