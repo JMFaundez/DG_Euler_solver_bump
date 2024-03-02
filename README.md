@@ -1,18 +1,20 @@
 # Discontinous-Galerkin solver for Euler equations
 
-To compile the solver please run: g++ *.cpp -o main.exe -O2 -larmadillo
-The armadillo package must be installes in order to compute some matrix operations (inverse of the mass matrix)
+## Case 
 
-DG.h defines all the functions used by the solver 
-flux_BC.cpp includes the flux(Fx,Fy,and Roe) and the boundary conditinos 
-quad.cpp includes the basis functions, 1d/2d quad points, Jacobian calculations, Mass Matrix for cuved elements
-readgrid.cpp is the function used to read the curved mesh. It just works for this particular case.
-residuals.cpp includes 4 functions to compute the interior and edge residual contributions
-solver.cpp put everything togheter and run the time marching scheme RK4
-main.cpp call the solver and there you can set the mesh, p, tolerance, and CFL
-The python files are for post-processing
+![]{./gen_mesh/mesh0.png}
 
-Inside the folder Meshes you can find the meshes used and the code to curve them.
+## Solver
+
+The armadillo package must be installed in order to compute some matrix operations (inverse of the mass matrix)
+
+1. `DG.h` defines all the functions used by the solver 
+2. `flux_BC.cpp` includes the flux (Fx,Fy,and Roe) and the boundary conditions 
+3. `quad.cpp` includes the basis functions, 1d/2d quad points, Jacobian calculations, Mass Matrix for curved elements
+4. `readgrid.cpp` is the function used to read the curved mesh. It just works for this particular case.
+5. `residuals.cpp` includes 4 functions to compute the interior and edge residual contributions.
+6. `solver.cpp` put everything together and run the time marching scheme RK4
+7. `main.cpp` call the solver and there you can set the mesh, p, tolerance, and CFL
 
 ## Bump mesh generation
 

@@ -109,7 +109,7 @@ void solve_GD(int max_iter, bool free_stream, double tolerance,
     solution_file.open(solution_file_name);
     ofstream residual_file;
     residual_file.open(residual_file_name);
-    files[0] = "./Meshes/"+files[0]+".gri";
+    files[0] = "../curve_mesh/"+files[0]+".gri";
     int N_lin = N_elem - N_curv;
     double V[N_nodes*2]; //nodes coordinate
     int E[N_elem*3]; //element nodes
