@@ -1,11 +1,8 @@
 #include "DG.h"
 #include <iostream>
 #include <ctime>
-#include <omp.h>
-#define THREAD_NUM 4
 int main()
 {
-    omp_set_num_threads(THREAD_NUM);
     int N_int; // number of interior faces
     int N_bound; // number of boundary faces
     int N_elem; // number of elements 
@@ -36,11 +33,6 @@ int main()
     solve_GD(max_iter, free_stream, tolerance, N_nodes, N_elem, N_curv, N_int, N_bound, files, p, CFL);
     clock_t end = clock();
     cout << "Total time: " << double(end-begin)/CLOCKS_PER_SEC <<endl;
-    #pragma omp parallel
-    {
-        cout<< "hello multicore user!"<<endl;
-    }
-    cout << "  Number of processors available = " << omp_get_num_procs ( ) << "\n";
 
     return 0;
 }
